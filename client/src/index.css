@@ -1,0 +1,163 @@
+/* Base styling */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background-color: #0b1220;
+  color: #e6eaf2;
+}
+
+/* Layout container */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Header section */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+/* Small tag-like badge */
+.badge {
+  background-color: #16233a;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+/* Main grid styling */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 6px;
+  background-color: #0e1628;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+/* Each clickable cell */
+.cell {
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #122036;
+  border: 1px solid #1b2a47;
+  border-radius: 8px;
+  font-size: 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.06s, background-color 0.15s, border-color 0.15s;
+}
+
+.cell:hover {
+  background-color: #162a4d;
+}
+
+/* States for the cell */
+.cell.selected {
+  outline: 2px solid #4c8dff;
+  outline-offset: -2px;
+}
+
+.cell.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Info or control panel */
+.panel {
+  background-color: #0e1628;
+  border: 1px solid #1b2a47;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+/* Top control buttons and inputs */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+/* Input fields */
+.input {
+  background-color: #0b1220;
+  color: #e6eaf2;
+  border: 1px solid #1b2a47;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+/* Buttons */
+.button {
+  background-color: #2b61ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: #334b80;
+  cursor: not-allowed;
+}
+
+/* Footer section */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #9db0d0;
+}
+
+/* Small color indicators */
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2b61ff;
+  display: inline-block;
+}
+
+/* Action history */
+.history {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Dropdowns */
+.select {
+  background-color: #0b1220;
+  color: #e6eaf2;
+  border: 1px solid #1b2a47;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+/* Typography */
+.title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.subtle {
+  color: #9db0d0;
+}
