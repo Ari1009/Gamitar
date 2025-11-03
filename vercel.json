@@ -1,12 +1,11 @@
 {
   "version": 2,
-  "functions": {
-    "api/**/*.ts": {
-      "runtime": "edge"
-    }
-  },
   "builds": [
-    { "src": "client/package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } }
+    {
+      "src": "client/package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
   ],
   "routes": [
     { "handle": "filesystem" },
