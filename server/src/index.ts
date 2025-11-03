@@ -8,10 +8,18 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 4000;
-const origin = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
+const originsEnv = process.env.CLIENT_ORIGIN || 'http://localhost:5173';
+const allowedOrigins = originsEnv.split(',').map((s) => s.trim()).filter(Boolean);
 const cooldownSeconds = process.env.COOLDOWN_SECONDS ? parseInt(process.env.COOLDOWN_SECONDS, 10) : 0;
 
-app.use(cors({ origin }));
+const corsOrigin = (requestOrigin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
+  if (process.env.CORS_ANY === '1') return callback(null, true);
+  if (!requestOrigin) return callback(null, true);
+  if (allowedOrigins.includes(requestOrigin)) return callback(null, true);
+  return callback(null, false);
+};
+
+app.use(cors({ origin: corsOrigin }));
 
 app.get('/health', (_req, res) => {
   res.json({ ok: true });
@@ -19,7 +27,7 @@ app.get('/health', (_req, res) => {
 
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
-  cors: { origin, methods: ['GET', 'POST'] },
+  cors: { origin: corsOrigin, methods: ['GET', 'POST'] },
 });
 
 const ROWS = 10;
